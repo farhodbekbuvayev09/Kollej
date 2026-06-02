@@ -1,32 +1,3 @@
-    $text .= "ðŸ“± <b>Telefon:</b> " . hesc($telefon) . "\n";
-    $text .= "ðŸŽ“ <b>Yo'nalish:</b> " . hesc($yonalish) . "\n";
-    if ($savol !== '') {
-        $text .= "â“ <b>Savol:</b> " . hesc($savol) . "\n";
-    }
-    $text .= "\n<b>Holat:</b> â³ Kutilmoqda";
-
-    $cbData = 'accept:' . $phone; // max ~20 bytes
-
-    $res = tg('sendMessage', [
-        'chat_id'      => GROUP_ID,
-        'text'         => $text,
-        'parse_mode'   => 'HTML',
-        'reply_markup' => ['inline_keyboard' => [[
-            ['text' => "ðŸ“ž Qo'ng'iroq qilish", 'url'           => 'tel:' . $phone],
-            ['text' => 'âœ… Qabul qilindi',      'callback_data' => $cbData],
-        ]]],
-    ]);
-
-    if ($res['ok'] ?? false) {
-        echo json_encode(['ok' => true]);
-    } else {
-        $desc = $res['description'] ?? "Noma'lum xatolik";
-        error_log("[register.html] Telegram error: " . $desc);
-        echo json_encode(['ok' => false, 'error' => "Yuborishda xatolik yuz berdi. Iltimos qayta urinib ko'ring."]);
-    }
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="uz">
 <head>

@@ -154,7 +154,8 @@ function initLanguageSwitcher() {
   const navInner = document.querySelector('.nav-inner');
   if (!navInner) return;
 
-  const switcherHTML = \`n    <div class="lang-switcher">
+  const switcherHTML = `
+    <div class="lang-switcher">
       <div class="lang-current">
         <img src="https://flagcdn.com/w20/uz.png" alt="UZ">
         <span>UZ</span>
@@ -166,7 +167,7 @@ function initLanguageSwitcher() {
         <button data-lang="en"><img src="https://flagcdn.com/w20/gb.png" alt="EN"> English</button>
       </div>
     </div>
-  \;
+  `;
   
   // Insert before burger menu or at end of nav
   const burger = document.querySelector('.burger');
@@ -198,7 +199,7 @@ function initLanguageSwitcher() {
       // Update UI
       const imgSrc = e.currentTarget.querySelector('img').src;
       const langCode = lang.toUpperCase();
-      currentBtn.innerHTML = \<img src="\" alt="\"> <span>\</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="6 9 12 15 18 9"/></svg>\;
+      currentBtn.innerHTML = `<img src="${imgSrc}" alt="${langCode}"> <span>${langCode}</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="6 9 12 15 18 9"/></svg>`;
 
       // Trigger Google Translate
       const select = document.querySelector('.goog-te-combo');
