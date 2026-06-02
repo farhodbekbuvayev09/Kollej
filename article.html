@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="1-son texnikumi â€” An'ana va texnologiyalarni birlashtirish. To'qimachilik sanoati bilan hamkorlik.">
+  <title>An'ana va Texnologiyalar â€” 1-son texnikumi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Article-page-only tweaks */
+    body {
+      background: var(--white);
+    }
+
+    /* Nav override: always white on article page */
+    .main-nav {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grey-200);
+    }
+    .main-nav .nav-brand  { color: var(--black); }
+    .main-nav .nav-links a { color: var(--grey-600); }
+    .main-nav .nav-links a:hover { color: var(--black); }
+    .main-nav .nav-cta  { border-color: var(--black); color: var(--black); }
+    .main-nav .nav-cta:hover { background: var(--black); color: var(--white); }
+    .main-nav .burger span { background: var(--black); }
+
+    /* Separator line */
+    .art-sep {
+      width: 100%;
+      height: 1px;
+      background: var(--grey-200);
+      margin: 0;
+    }
+
+    /* Section padding helper */
+    .art-section {
+      padding: clamp(50px, 7vw, 110px) 0;
+    }
+
+    /* grey bg block */
+    .art-bg-grey {
+      background: var(--grey-50);
+    }
+
+    /* Dilnoza quote block styling */
+    .dilnoza-block {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: clamp(50px, 7vw, 100px) clamp(20px, 4vw, 40px);
+    }
+
+    /* Photo strip â€” horizontal scroll on mobile */
+    .photo-strip {
+      display: flex;
+      gap: 12px;
+      padding: 0 clamp(20px, 4vw, 60px);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .photo-strip::-webkit-scrollbar { display: none; }
+    .photo-strip img {
+      height: clamp(280px, 40vw, 500px);
+      width: auto;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    /* Newspaper essay */
+    .newspaper-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(50px, 7vw, 100px) clamp(20px, 4vw, 60px);
+    }
+
+    .newspaper-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 36px;
+      border-bottom: 3px solid var(--black);
+      padding-bottom: 30px;
+    }
+
+    .newspaper-columns {
+      column-count: 3;
+      column-gap: 44px;
+      column-rule: 1px solid var(--grey-200);
+    }
+
+    .newspaper-columns p {
+      font-family: var(--font-sans);
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+      line-height: 1.8;
+      color: var(--grey-800);
+      margin-bottom: 22px;
+      break-inside: avoid;
+    }
+
+    .newspaper-columns blockquote {
+      border-left: 3px solid var(--black);
+      padding: 16px 20px;
+      margin: 24px 0;
+      break-inside: avoid;
+      background: var(--grey-50);
+    }
+
+    .newspaper-columns blockquote p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+
+    .newspaper-columns blockquote cite {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-600);
+    }
+
+    @media (max-width: 900px) {
+      .newspaper-columns {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .newspaper-columns {
+        column-count: 1;
+      }
+    }
+
+    /* Article back to home strip */
+    .article-back-strip {
+      background: var(--black);
+      padding: 28px clamp(20px, 4vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .article-back-strip p {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: var(--white);
+      font-style: italic;
+    }
+
+    .article-back-strip a {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      padding: 12px 28px;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      transition: all 0.3s var(--ease-out-expo);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .article-back-strip a:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (same as main page) -->
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">1-son texnikumi</a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">Biz Haqimizda</a></li>
+        <li><a href="news.html">Yangiliklar</a></li>
+        <li><a href="life.html">O'quvchilar Hayoti</a></li>
+        <li><a href="index.html#contact">Bog'lanish</a></li>
+        <li><a href="register.html" class="nav-register-cta">Ro'yxatdan o'tish</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="mobile-overlay" id="mobile-overlay">
+    <button class="mobile-close" id="mobile-close">&#10005;</button>
+    <ul class="mobile-links">
+      <li><a href="index.html#about">Biz Haqimizda</a></li>
+      <li><a href="news.html">Yangiliklar</a></li>
+      <li><a href="life.html">O'quvchilar Hayoti</a></li>
+      <li><a href="index.html#contact">Bog'lanish</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         HERO SPLIT: Left text / Right video2
+    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="article-hero">
+      <div class="article-hero-left">
+        <a href="index.html" class="article-back">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 9H4M4 9L9 14M4 9L9 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Bosh sahifaga qaytish
+        </a>
+        <p class="article-hero-tag">Yangilik Â· Hamkorlik Â· 2026</p>
+        <h1 class="article-hero-title reveal-up">
+          An'ana va texnologiyalarni birlashtirish
+        </h1>
+        <p class="article-hero-sub reveal-up" style="transition-delay:0.2s">
+          Bir guruh o'quvchilar Shahrixon tumani to'qimachilik sanoatida ularni qanday ishlatish kerakligini ko'rsatishmoqda.
+        </p>
+      </div>
+      <div class="article-hero-right">
+        <video
+          class="article-hero-video"
+          src="Images/video2.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
+      </div>
+    </section>
+
+    <div class="art-sep"></div>
+
+    <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         ARTICLE BODY â€” Madina's story
+    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="art-section">
+      <div class="article-body">
+        <p class="article-p article-dropcap reveal-up">
+          Shahrixon 1-son texnikumining tikuvchilik studiyasida ikkinchi kurs o'quvchisi Madina o'zining navbatdagi dizayn loyihasi ustida o'tiribdi. Uning atrofida biroz eskirgan, ammo yangi hayot kutayotgan kiyim-kechaklar to'plangan.
+        </p>
+
+        <blockquote class="article-quote reveal-up" style="transition-delay:0.15s">
+          <p>"Kiyimdagi kichik bir nuqson yoki yirtiq â€” bu aslo fojia emas, balki yangi va betakror dizayn yaratish uchun ajoyib imkoniyatdir."</p>
+          <cite>â€” Madina, 17 yosh, bo'lajak kiyim dizayneri</cite>
+        </blockquote>
+
+        <p class="article-p reveal-up" style="transition-delay:0.2s">
+          Madina va uning o'ndan ortiq guruhdoshlari texnikum qoshida tashkil etilgan "Yosh dizaynerlar to'garagi" a'zolaridir. Ular har hafta bir necha bor to'planib, milliy choy ustida kiyimlarga ikkinchi hayot baxsh etishadi, zamonaviy urf va an'analarni uyg'unlashtirib, yangi kolleksiyalar yaratishadi.
+        </p>
+      </div>
+    </section>
+
+    <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         CENTER IMAGE â€” image6
+    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <figure class="article-center-img reveal-up">
+      <img
+        src="Images/image6.jpg"
+        alt="O'quvchilar zamonaviy to'qimachilik uskunalarida"
+        loading="lazy"
+      >
+      <figcaption>
+        O'quvchilarimiz zamonaviy to'qimachilik uskunalarida real ishlab chiqarish jarayonini o'rganmoqdalar.
+      </figcaption>
+    </figure>
+
+    <section class="art-section art-bg-grey">
+      <div class="article-body">
+        <p class="article-p reveal-up">
+          O'quvchilarimiz zamonaviy to'qimachilik uskunalarida real ishlab chiqarish jarayonini o'rganmoqdalar. Bu yerda nazariya amaliyot bilan birlashadi, sifat nazorati har bir bosqichda ta'minlanadi.
+        </p>
+      </div>
+    </section>
+
+    <div class="art-sep"></div>
+
+    <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         DILNOZA QUOTE SECTION
+    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="art-section">
+      <div class="dilnoza-block">
+
+        <blockquote class="article-quote reveal-up">
+          <p>"Odamlar shunchaki tashlab yuborishi mumkin bo'lgan kiyimlarni qayta tiklashga va ularga ikkinchi hayot berishga yordam berishni juda yaxshi ko'raman."</p>
+          <cite>â€” Dilnoza, Asaka tumani, 2-kurs talabasi</cite>
+        </blockquote>
+
+        <p class="article-p reveal-up" style="transition-delay:0.1s">
+          "Do'stlarimga buni qanday tuzatishni o'rgatishdan doim xursandman."
+        </p>
+
+        <p class="article-p reveal-up" style="transition-delay:0.2s">
+          Kiyim tikish va uni ta'mirlash to'garaklari bizning momolarimiz davridan beri, xususan, qadimiy mahalla va qizlar yig'inlarida "Hashar" an'analari orqali yashab kelmoqda. Garchi hozirgi kunda tayyor kiyimlar ko'p bo'lsa-da, so'nggi yillarda yoshlar (Gen Z) o'rtasida kiyimlarni qayta tiklash va qo'l mehnati bilan individual uslub yaratish juda yangicha trendga aylanib bormoqda.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         PHOTO GRID â€” image31, 32, 33, 34, 35
+    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="art-section" style="padding-top:0">
+      <div class="article-photo-grid reveal-up">
+        <img src="Images/image31.jpg" alt="Tikuvchilik ustaxonasi 1" loading="lazy">
+        <img src="Images/image32.jpg" alt="Tikuvchilik ustaxonasi 2" loading="lazy">
+        <img src="Images/image33.jpg" alt="Tikuvchilik ustaxonasi 3" loading="lazy">
+        <img src="Images/image34.jpg" alt="Tikuvchilik ustaxonasi 4" loading="lazy">
+      </div>
+    </div>
+
+    <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         NEWSPAPER ESSAY SECTION
+    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <section class="art-section art-bg-grey">
+      <div class="newspaper-wrap">
+        <h2 class="newspaper-title reveal-up">
+          Ijodning haqiqiy maskani:<br>
+          Raqamli tikuvchilik ustaxonasi
+        </h2>
+
+        <div class="newspaper-columns">
+          <p class="reveal-up">
+            Texnikumimiz qoshida faoliyat yuritayotgan raqamli tikuvchilik va modellashtirish ustaxonasi o'quvchilar uchun shunchaki navbatdagi dars o'tiladigan, soatbay reja to'ldiriladigan zerikarli xona emas. Bu yer â€” har bir mato bo'lagini, har bir ip tolasini alohida ijodiy topshiriq va chaqiriq sifatida ko'radigan, yosh iqtidorlarning haqiqiy mahorat maskanidir.
+          </p>
+
+          <p class="reveal-up">
+            Ustaxonaga qadam qo'ygan har bir qizimiz dastgoh ortiga o'tirgan vaqtdan boshlab oddiy o'quvchi emas, balki g'irt xalqaro darajadagi dizaynerlar kabi global fikrlashni, kiyim arxitekturasini yaratishni o'rganadi.
+          </p>
+
+          <p class="reveal-up">
+            Ushbu erkin va kreativ amaliy muhit texnikumning ko'p yillik tajribaga ega ustozlari hamda ishlab chiqarish ustalari tomonidan maxsus tashkil etilgan. Bundan ko'zlangan asosiy maqsad â€” o'quvchilarni kundalik o'quv bosimidan, qat'iy nazariy qoliplardan biroz chalg'itgan holda, ularga o'z ustilarida mustaqil izlanishlari va erkin ijod qilishlari uchun cheksiz imkoniyat maydonini taqdim etishdir.
+          </p>
+
+          <p class="reveal-up">
+            Bu yerda hech qanday cheklovlar yo'q: har bir o'quvchi o'z miyasida pishib yetilgan shaxsiy interaktiv g'oyalarini, chizmalarini va eng noodatiy andozalarini to'g'ridan-to'g'ri matoga ko'chirishi, uni tirik shaklga keltirishi mumkin.
+          </p>
+
+          <blockquote>
+            <p>"Bugungi texnologiya va tezkor moda asrida yoshlarni faqat tayyor narsani sotib olishga, kiyimni shunchaki bir marta kiyib tashlab yuborishga o'rgatib qo'yadigan iste'molchilik madaniyati g'irt avjiga chiqqan. Bizning vazifamiz esa o'quvchilarni mana shu salbiy oqimdan uzoqlashtirish, ularda kiyimga, inson qo'li bilan yaratilgan mehnatga nisbatan ongli va hurmat munosabatini shakllantirishdir."</p>
+            <cite>â€” To'garak va amaliyot jarayonlari rahbari</cite>
+          </blockquote>
+
+          <p class="reveal-up">
+            Eng muhimi, biz bu yerda ortiqcha xarajat qilmaymiz, balki g'irt o'zimizning laboratoriyalarda ishlab chiqarilgan mato bo'laklaridan, tekstil qoldiqlaridan qayta foydalanib, g'irt eksklyuziv kiyimlar yaratamiz.
+          </p>
+
+          <p class="reveal-up">
+            Tarixga qaraydigan bo'lsak, ustaxona dastlab tashkil etilganda bor-yo'g'i ikki-uchta o'quvchi bilan ish boshlagan edi. Biroq vaqt o'tishi bilan, qizlar o'rtasida o'zaro fikr alohida ko'p muloqot va yordam berish madaniyati shakllandi va bugungi kunga kelib, bu maskan guruhlarning eng sevimli, darsdan keyin ham chirog'i o'chmaydigan markaziy ijodiy shtabiga aylandi.
+          </p>
+
+          <p class="reveal-up">
+            Har bir tikilgan chok, har bir tayyorlangan qora ko'ylak yoki shim â€” yoshlarimizning global moda bozorida o'z so'zini ayta oladigan haqiqiy professional bo'lib yetishayotganidan dalolatdir.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image 35 â€” closing full-width -->
+    <figure class="article-center-img reveal-up" style="padding-top:clamp(40px,5vw,80px); padding-bottom:clamp(40px,5vw,80px);">
+      <img
+        src="Images/image35.jpg"
+        alt="O'quvchilar tikuvchilik mashinalari ustida"
+        loading="lazy"
+      >
+      <figcaption>
+        Texnikum tikuvchilik ustaxonasi â€” ijod va texnologiyaning uyg'unlashuv maskani.
+      </figcaption>
+    </figure>
+
+    <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+         BACK TO HOME STRIP
+    â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="article-back-strip">
+      <p>Yana ko'proq maqolalar va yangiliklar uchun bosh sahifaga tashrif buyuring.</p>
+      <a href="index.html">Bosh Sahifa</a>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+  <!-- Texnikum Agent Widget -->
+  <script src="agent-widget.js"></script>
+</body>
+</html>

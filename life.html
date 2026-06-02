@@ -1,0 +1,811 @@
+﻿<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="1-son texnikumi â€” O'quvchilar hayoti, madaniy tadbirlar, ko'rgazmalar va milliy qadriyatlar.">
+  <title>O'quvchilar Hayoti â€” 1-son texnikumi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* â”€â”€ Life-page-only overrides â”€â”€ */
+    body { background: var(--white); }
+
+    /* Nav always white on this page */
+    .main-nav {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--grey-200);
+    }
+    .main-nav .nav-brand { color: var(--black); }
+    .main-nav .nav-links a { color: var(--grey-600); }
+    .main-nav .nav-links a:hover { color: var(--black); }
+    .main-nav .burger span { background: var(--black); }
+
+    /* â”€â”€ UTILITY â”€â”€ */
+    .lp-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 60px);
+    }
+
+    .lp-sep {
+      width: 100%;
+      height: 1px;
+      background: var(--grey-200);
+    }
+
+    /* â”€â”€ HERO INTRO â”€â”€ */
+    .lp-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100svh;
+      padding-top: var(--nav-h);
+    }
+
+    .lp-hero-images-col {
+      background: var(--grey-50);
+      padding: clamp(40px, 6vw, 100px) clamp(20px, 4vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid var(--grey-200);
+    }
+
+    .lp-hero-collage {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      width: 100%;
+      max-width: 580px;
+    }
+
+    .lp-hero-collage-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      transition: transform 0.6s var(--ease-out-expo);
+    }
+
+    .lp-hero-collage-wrap:hover {
+      transform: translateY(-6px);
+    }
+
+    .lp-hero-collage-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s var(--ease-out-expo);
+    }
+
+    .lp-hero-collage-wrap:hover .lp-hero-collage-img {
+      transform: scale(1.04);
+    }
+
+    .lp-hero-collage-label {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--white);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .lp-hero-text-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(60px, 8vw, 120px) clamp(40px, 6vw, 100px);
+      background: var(--white);
+    }
+
+    .lp-hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    .lp-hero-title {
+      font-family: var(--font-sans);
+      font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      margin-bottom: 32px;
+    }
+
+    .lp-hero-title span {
+      color: var(--red);
+    }
+
+    .lp-hero-body {
+      font-family: var(--font-sans);
+      font-size: clamp(1rem, 1.3vw, 1.15rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--grey-600);
+      max-width: 560px;
+    }
+
+    /* â”€â”€ SECTION WRAPPER â”€â”€ */
+    .lp-section {
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+
+    .lp-section-alt {
+      background: var(--grey-50);
+    }
+
+    /* â”€â”€ SECTION LABEL â”€â”€ */
+    .lp-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey-400);
+      margin-bottom: 48px;
+    }
+    .lp-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--grey-200);
+    }
+
+    /* â”€â”€ LAYOUTS â”€â”€ */
+    .lp-layout-a {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: clamp(20px, 3vw, 50px);
+      align-items: start;
+    }
+
+    .lp-layout-a-right {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(20px, 3vw, 40px);
+      padding-top: clamp(40px, 6vw, 100px);
+    }
+
+    .lp-layout-b {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(20px, 3vw, 50px);
+      align-items: start;
+    }
+
+    .lp-layout-b-left {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(20px, 3vw, 40px);
+      padding-top: clamp(40px, 6vw, 100px);
+    }
+
+    /* â”€â”€ GRIDS â”€â”€ */
+    .lp-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(20px, 3vw, 40px);
+    }
+
+    .lp-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(16px, 2.5vw, 32px);
+    }
+
+    .lp-grid-5 {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: clamp(16px, 2.5vw, 32px);
+    }
+    .lp-grid-5 .lp-img-wrap:nth-child(1) { grid-column: span 3; }
+    .lp-grid-5 .lp-img-wrap:nth-child(2) { grid-column: span 3; }
+    .lp-grid-5 .lp-img-wrap:nth-child(3) { grid-column: span 2; }
+    .lp-grid-5 .lp-img-wrap:nth-child(4) { grid-column: span 2; }
+    .lp-grid-5 .lp-img-wrap:nth-child(5) { grid-column: span 2; }
+
+    /* â”€â”€ IMAGES â”€â”€ */
+    .lp-img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.9s var(--ease-out-expo);
+    }
+
+    .lp-img-wrap {
+      overflow: hidden;
+      position: relative;
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+
+    .lp-img-wrap:hover .lp-img {
+      transform: scale(1.03);
+    }
+
+    .lp-img-tall { aspect-ratio: 3/4; }
+    .lp-img-wide { aspect-ratio: 16/9; }
+    .lp-img-sq   { aspect-ratio: 1/1; }
+    .lp-img-cin  { aspect-ratio: 16/7; }
+
+    /* â”€â”€ TYPOGRAPHY â”€â”€ */
+    .lp-section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+
+    .lp-section-title-white {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .lp-section-body {
+      font-family: var(--font-sans);
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--grey-600);
+    }
+
+    .lp-section-body-white {
+      font-family: var(--font-sans);
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.72);
+    }
+
+    /* â”€â”€ CAPTION â”€â”€ */
+    .lp-caption {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--grey-400);
+      margin-top: 12px;
+      text-transform: uppercase;
+    }
+
+    /* â”€â”€ GIANT QUOTE â”€â”€ */
+    .lp-quote-block {
+      padding: clamp(60px, 8vw, 120px) 0;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .lp-quote-text {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.35;
+      color: var(--black);
+      margin-bottom: 28px;
+    }
+
+    .lp-quote-cite {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-400);
+    }
+
+    /* â”€â”€ SINGLE IMAGE FULL â”€â”€ */
+    .lp-solo-section {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      min-height: clamp(500px, 60vw, 800px);
+    }
+
+    .lp-solo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lp-solo-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(50px, 7vw, 100px) clamp(40px, 6vw, 90px);
+      background: var(--grey-50);
+    }
+
+    /* â”€â”€ BACK STRIP â”€â”€ */
+    .lp-back-strip {
+      background: var(--black);
+      padding: 36px clamp(20px, 4vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .lp-back-strip p {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: var(--white);
+      font-style: italic;
+    }
+
+    .lp-back-strip a {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      padding: 14px 32px;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      transition: all 0.3s var(--ease-out-expo);
+      white-space: nowrap;
+    }
+
+    .lp-back-strip a:hover {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
+    /* â”€â”€ EDITORIAL BG â”€â”€ */
+    .lp-anthem-section {
+      position: relative;
+      background: var(--black);
+      padding: clamp(80px, 12vw, 160px) 0;
+      overflow: hidden;
+    }
+
+    .lp-anthem-section::before {
+      content: 'TEXNIKUM';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-serif);
+      font-size: clamp(6rem, 18vw, 18rem);
+      font-weight: 900;
+      color: rgba(255,255,255,0.02);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .lp-anthem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .lp-anthem-img-wrap {
+      overflow: hidden;
+      border-radius: 6px;
+    }
+
+    .lp-anthem-img {
+      width: 100%;
+      aspect-ratio: 16/11;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: opacity 0.6s, transform 0.8s;
+    }
+
+    .lp-anthem-img-wrap:hover .lp-anthem-img {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+
+    .lp-anthem-text-label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    /* â”€â”€ RESPONSIVE â”€â”€ */
+    @media (max-width: 1000px) {
+      .lp-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .lp-hero-images-col {
+        border-left: none;
+        border-top: 1px solid var(--grey-200);
+      }
+      .lp-layout-a,
+      .lp-layout-b {
+        grid-template-columns: 1fr;
+      }
+      .lp-layout-b { direction: ltr; }
+      .lp-layout-a-right,
+      .lp-layout-b-left {
+        padding-top: 0;
+      }
+      .lp-anthem-grid {
+        grid-template-columns: 1fr;
+      }
+      .lp-solo-section {
+        grid-template-columns: 1fr;
+      }
+      .lp-solo-text {
+        padding: clamp(40px, 6vw, 70px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .lp-grid-2, .lp-grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .lp-back-strip {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">1-son texnikumi</a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">Biz Haqimizda</a></li>
+        <li><a href="news.html">Yangiliklar</a></li>
+        <li><a href="life.html" style="color:var(--red); font-weight:600;">O'quvchilar Hayoti</a></li>
+        <li><a href="index.html#contact">Bog'lanish</a></li>
+        <li><a href="register.html" class="nav-register-cta">Ro'yxatdan o'tish</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-overlay" id="mobile-overlay">
+    <button class="mobile-close" id="mobile-close">&#10005;</button>
+    <ul class="mobile-links">
+      <li><a href="index.html#about">Biz Haqimizda</a></li>
+      <li><a href="news.html">Yangiliklar</a></li>
+      <li><a href="life.html">O'quvchilar Hayoti</a></li>
+      <li><a href="index.html#contact">Bog'lanish</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         0. HERO INTRO â€” Premium Double Image Grid
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-hero">
+      <div class="lp-hero-text-col">
+        <p class="lp-hero-eyebrow reveal-up">O'quvchilar Hayoti</p>
+        <h1 class="lp-hero-title reveal-up" style="transition-delay:0.1s">
+          Tadbir va ijodga to'la<br>
+          <span>faol yoshlik lahzalari</span>
+        </h1>
+        <p class="lp-hero-body reveal-up" style="transition-delay:0.2s">
+          Shahrixon tumani 1-son texnikumida o'quvchilar hayoti nafaqat auditoriyalardagi qizg'in ta'lim, balki darsdan tashqari tashkil etiladigan madaniy, ijodiy va sport tadbirlari bilan boy. 
+          <br><br>
+          Ushbu sahifada o'quvchilarimizning o'quvdan tashqari hayoti, ularning turli to'garaklardagi faolligi, respublika bellashuvlaridagi ishtiroki va hamjihat oilamizdagi unutilmas damlari aks etgan.
+        </p>
+      </div>
+      <div class="lp-hero-images-col">
+        <div class="lp-hero-collage">
+          <div class="lp-hero-collage-wrap reveal-up">
+            <img src="Images/image130.jpg" alt="Festival ishtirokchilari" class="lp-hero-collage-img" loading="lazy">
+            <span class="lp-hero-collage-label">Tarixiy liboslar festivali</span>
+          </div>
+          <div class="lp-hero-collage-wrap reveal-up" style="transition-delay:0.15s">
+            <img src="Images/image123.jpg" alt="Texnikum o'quvchi qizlari" class="lp-hero-collage-img" loading="lazy">
+            <span class="lp-hero-collage-label">Rasmiy formadagi o'quvchilarimiz</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lp-sep"></div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         1. TARIXIY SAHNALAR â€” image129 + image132
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-section">
+      <div class="lp-container">
+        <div class="lp-label">Tarixiy Sahnalar va Milliy San'at</div>
+
+        <div class="lp-layout-a">
+          <!-- Big left image -->
+          <div class="lp-img-wrap reveal-up">
+            <img src="Images/image129.jpg" alt="Boburiylar sahnalashtirish" class="lp-img lp-img-wide" loading="lazy">
+            <p class="lp-caption">Boburiylar davri intellektual bellashuvi</p>
+          </div>
+
+          <!-- Right: text + small image -->
+          <div class="lp-layout-a-right">
+            <div class="reveal-up" style="transition-delay:0.15s">
+              <h2 class="lp-section-title">Tarixiy merosga sadoqat va sahna mahorati</h2>
+              <p class="lp-section-body">
+                Texnikumimizda ma'naviy-ma'rifiy ishlar doirasida o'quvchilar buyuk ajdodlarimiz siymolarini, xususan "Boburiylar" hayotini sahnalashtirishadi. Milliy liboslar va chuqur tarixiy chiqishlar yoshlarimizda vatanga muhabbat hissini uyg'otadi.
+              </p>
+            </div>
+            <div class="lp-img-wrap reveal-up" style="transition-delay:0.25s">
+              <img src="Images/image132.jpg" alt="Tarixiy chopon kiygan ustozlar" class="lp-img lp-img-sq" loading="lazy">
+              <p class="lp-caption">Milliy libosdagi uchrashuvlar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lp-sep"></div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         2. CULINARY COMPETITION â€” image75 + image76 + image77 (3-grid)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-section lp-section-alt">
+      <div class="lp-container">
+        <div class="lp-label">Pazandachilik Bellashuvlari</div>
+        <h2 class="lp-section-title reveal-up" style="margin-bottom:40px;">Milliy taomlar festivali va pazandalik mahorati</h2>
+        
+        <div class="lp-grid-3">
+          <div class="lp-img-wrap reveal-up">
+            <img src="Images/image75.jpg" alt="Oshpazlik bellashuvi" class="lp-img lp-img-tall" loading="lazy">
+            <p class="lp-caption">Qozonda milliy palov tayyorlash</p>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.15s">
+            <img src="Images/image76.jpg" alt="Oshpazlik amaliyoti" class="lp-img lp-img-tall" loading="lazy">
+            <p class="lp-caption">Tajribali ustozlar nazorati</p>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.3s">
+            <img src="Images/image77.jpg" alt="Pazandachilik g'oliblari" class="lp-img lp-img-tall" loading="lazy">
+            <p class="lp-caption">Tayyorlanish va xizmat madaniyati</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lp-sep"></div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         3. DUMPLINGS / PASTRIES â€” image78 + image79 (2-grid)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-section">
+      <div class="lp-container">
+        <div class="lp-label">Lazzat Sirlari: Xamir Taomlari</div>
+        <div class="lp-layout-b">
+          <div class="lp-layout-b-left">
+            <div class="reveal-up">
+              <h2 class="lp-section-title">An'anaviy xamir taomlar mahorat darslari</h2>
+              <p class="lp-section-body">
+                O'quvchi qizlarimiz milliy atlas liboslar va fartuklarda barak hamda chuchvara kabi murakkab va nozik milliy taomlarni tugish bo'yicha mahorat darslarida ishtirok etadilar. Bu to'garaklar ularni kelajak oilaviy hayotga va umumiy ovqatlanish korxonalari boshqaruviga tayyorlaydi.
+              </p>
+            </div>
+            <div class="lp-img-wrap reveal-up" style="transition-delay:0.2s">
+              <img src="Images/image79.jpg" alt="Pazandachilik to'garagi" class="lp-img lp-img-sq" loading="lazy">
+              <p class="lp-caption">Taom bezash sirlari</p>
+            </div>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.1s">
+            <img src="Images/image78.jpg" alt="Qizlar chuchvara tugmoqda" class="lp-img lp-img-tall" loading="lazy">
+            <p class="lp-caption">Do'stona ijodiy muhit</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lp-sep"></div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         4. EXHIBITIONS & TARGETING â€” image80, 81, 82, 83, 84 (5-grid)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-section lp-section-alt">
+      <div class="lp-container">
+        <div class="lp-label">Ko'rgazmalar va Targ'ibot</div>
+        <h2 class="lp-section-title reveal-up" style="margin-bottom:40px;">Texnikum brendini ommalashtirish va ijod ko'rgazmalari</h2>
+
+        <div class="lp-grid-5">
+          <div class="lp-img-wrap reveal-up">
+            <img src="Images/image80.jpg" alt="Exhibition stand" class="lp-img lp-img-wide" loading="lazy">
+            <p class="lp-caption">Targ'ibot stendi va buketlar</p>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.1s">
+            <img src="Images/image81.jpg" alt="Texnikum stendi" class="lp-img lp-img-wide" loading="lazy">
+            <p class="lp-caption">E'lonlar va qabul jarayoni</p>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.15s">
+            <img src="Images/image82.jpg" alt="O'quvchilar ishlari" class="lp-img lp-img-sq" loading="lazy">
+            <p class="lp-caption">Ijod namunalari</p>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.2s">
+            <img src="Images/image83.jpg" alt="Milliy hunarmandchilik" class="lp-img lp-img-sq" loading="lazy">
+            <p class="lp-caption">Amaliy ishlanmalar</p>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.25s">
+            <img src="Images/image84.jpg" alt="Ko'rgazma tomoshabinlari" class="lp-img lp-img-sq" loading="lazy">
+            <p class="lp-caption">Madaniy festivallar</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lp-sep"></div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         5. SEWING WORKSHOP â€” image97 + image120
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-section">
+      <div class="lp-container">
+        <div class="lp-label">Tikuvchilik va Amaliy Ishlab Chiqarish</div>
+        <div class="lp-layout-a">
+          <div class="lp-img-wrap reveal-up">
+            <img src="Images/image97.jpg" alt="Tikuvchilik sexi" class="lp-img lp-img-wide" loading="lazy">
+            <p class="lp-caption">Zamonaviy tikuv laboratoriyasi va o'quvchi qizlar</p>
+          </div>
+          <div class="lp-layout-a-right">
+            <div class="reveal-up" style="transition-delay:0.1s">
+              <h2 class="lp-section-title">Kompyuterlashtirilgan tikuv uskunalari amaliyoti</h2>
+              <p class="lp-section-body">
+                Tikuvchilik va tekstil sanoati yo'nalishi o'quvchilari darsdan tashqari to'garaklarda maxsus zamonaviy seximizda to'liq amaliyot o'tashadi. Tikilgan eksklyuziv modellar va mahsulotlar tashqi ko'rgazmalarga taqdim etiladi.
+              </p>
+            </div>
+            <div class="lp-img-wrap reveal-up" style="transition-delay:0.2s">
+              <img src="Images/image120.jpg" alt="Tayyor mahsulotlar taqdimoti" class="lp-img lp-img-sq" loading="lazy">
+              <p class="lp-caption">O'quvchilar qo'l mehnati ko'rgazmasi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         6. PATRIOTISM â€” image116 (dark block alone)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-anthem-section">
+      <div class="lp-container">
+        <div class="lp-anthem-grid">
+          <div class="lp-anthem-img-wrap reveal-up">
+            <img src="Images/image116.jpg" alt="Yosh qutqaruvchi jamoasi" class="lp-anthem-img" loading="lazy">
+          </div>
+          <div class="reveal-up" style="transition-delay:0.15s">
+            <p class="lp-anthem-text-label">Intizom Â· Shijoat Â· G'alaba</p>
+            <h2 class="lp-section-title-white" style="font-size:clamp(2.5rem,4.5vw,4.5rem);margin-bottom:32px;">
+              "Yosh qutqaruvchi" vatanparvarlik musobaqalari g'oliblari
+            </h2>
+            <p class="lp-section-body-white">
+              Shahrixon tumani 1-son texnikumi o'quvchilari viloyat miqyosida Andijon viloyati Favqulodda vaziyatlar boshqarmasi tomonidan tashkil etilgan "Yosh qutqaruvchi" musobaqalarida faxrli o'rinlarni egallab, maxsus diplom va qimmatbaho sovg'alar bilan taqdirlanganlar. O'quvchilarimiz harbiy va fuqarolik mudofaasi ko'nikmalarini a'lo darajada o'zlashtirmoqda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lp-sep"></div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         7. MINI FOOTBALL â€” image59 + image61 (2-grid)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-section">
+      <div class="lp-container">
+        <div class="lp-label">Sport va Sog'lom Turmush Tarzi</div>
+        <h2 class="lp-section-title reveal-up" style="margin-bottom:40px;">Ichki mini-futbol chempionatlari va qizg'in o'yinlar</h2>
+        
+        <div class="lp-grid-2">
+          <div class="lp-img-wrap reveal-up">
+            <img src="Images/image59.jpg" alt="Futbol o'yini" class="lp-img lp-img-wide" loading="lazy">
+            <p class="lp-caption">Texnikum yopiq mini-stadioni</p>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.15s">
+            <img src="Images/image61.jpg" alt="Shiddatli futbol bellashuvi" class="lp-img lp-img-wide" loading="lazy">
+            <p class="lp-caption">Guruhlararo do'stona chempionatlar</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lp-sep"></div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         8. WARM STUDY MEETINGS â€” image67 + image70 + image71 (3-grid)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-section lp-section-alt">
+      <div class="lp-container">
+        <div class="lp-label">Ahillik va Hamjihatlik</div>
+        <h2 class="lp-section-title reveal-up" style="margin-bottom:40px;">Ahil oila muhiti: darsdan tashqari samimiy suhbatlar</h2>
+
+        <div class="lp-grid-3">
+          <div class="lp-img-wrap reveal-up">
+            <img src="Images/image67.jpg" alt="O'quvchi qizlar bog'da" class="lp-img lp-img-tall" loading="lazy">
+            <p class="lp-caption">Maysazor ustida mutolaa va suhbat</p>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.15s">
+            <img src="Images/image70.jpg" alt="Bahoriy ayyomlar" class="lp-img lp-img-tall" loading="lazy">
+            <p class="lp-caption">Milliy taomlar va hamjihatlik sayli</p>
+          </div>
+          <div class="lp-img-wrap reveal-up" style="transition-delay:0.3s">
+            <img src="Images/image71.jpg" alt="Bayram tantanalari" class="lp-img lp-img-tall" loading="lazy">
+            <p class="lp-caption">Ustozlar bilan bir dasturxon atrofida</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lp-sep"></div>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         9. SPORTS PARADE â€” image26 + image27 (grand closing)
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <section class="lp-solo-section reveal-up">
+      <img src="Images/image26.jpg" alt="Respublika sport paradi" class="lp-solo-img" loading="lazy">
+      <div class="lp-solo-text">
+        <p style="font-family:var(--font-sans);font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:24px;">G'alaba Â· Respublika Paradi Â· Chempionlar</p>
+        <h2 class="lp-section-title" style="font-size:clamp(2rem,4.5vw,4rem);margin-bottom:28px;">
+          Respublika miqyosidagi yutuqlar va bayroq ostida marsh
+        </h2>
+        <p class="lp-section-body" style="max-width:520px; margin-bottom:30px;">
+          O'quvchilarimiz nafaqat hududiy, balki respublika darajasidagi yirik sport va yoshlar tadbirlarida texnikumimiz hamda tumanimiz sharafini munosib himoya qiladilar. Yirik sport saroylaridagi marshlar va musobaqalar yoshlarimiz shijoatini yanada oshiradi.
+        </p>
+        <div class="lp-img-wrap">
+          <img src="Images/image27.jpg" alt="Sport saroyi tadbiri" class="lp-img lp-img-cin" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+         BACK TO HOME
+    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <div class="lp-back-strip">
+      <p>Bosh sahifaga qaytib, 1-son texnikumi haqida batafsil ma'lumot oling.</p>
+      <a href="index.html">Bosh Sahifa</a>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+  <!-- Texnikum Agent Widget -->
+  <script src="agent-widget.js"></script>
+</body>
+</html>
