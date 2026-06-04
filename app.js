@@ -30,7 +30,7 @@ function initNavScrollBehaviour() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. MOBILE MENU
+// 2. MOBILE MENU — slide-in from right, swipe-to-close
 // ─────────────────────────────────────────────────────────────────────────────
 function initMobileMenu() {
   const burger  = document.getElementById('burger');
@@ -41,27 +41,40 @@ function initMobileMenu() {
 
   const links = overlay.querySelectorAll('a');
 
-  function open() {
+  function openMenu() {
     overlay.classList.add('open');
     burger.classList.add('open');
     document.body.style.overflow = 'hidden';
+    burger.setAttribute('aria-expanded', 'true');
   }
 
-  function shut() {
+  function closeMenu() {
     overlay.classList.remove('open');
     burger.classList.remove('open');
     document.body.style.overflow = '';
+    burger.setAttribute('aria-expanded', 'false');
   }
 
-  burger.addEventListener('click', open);
-  if (close) close.addEventListener('click', shut);
-  links.forEach(l => l.addEventListener('click', shut));
+  burger.addEventListener('click', openMenu);
+  if (close) close.addEventListener('click', closeMenu);
+  links.forEach(l => l.addEventListener('click', closeMenu));
 
   // Close on Escape
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') shut();
+    if (e.key === 'Escape') closeMenu();
   });
+
+  // Swipe-left to close on mobile
+  let touchStartX = 0;
+  overlay.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  overlay.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (diff > 60) closeMenu(); // swipe left 60px to close
+  }, { passive: true });
 }
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 3. SCROLL REVEAL — IntersectionObserver based, no library
