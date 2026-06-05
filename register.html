@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Shahrixon 1-son texnikumiga ro'yxatdan o'ting. 2026-2027 o'quv yili qabuli davom etmoqda. 390 ta o'rin, 7 yo'nalish.">
-  <title>Ro'yxatdan o'tish â€” Shahrixon 1-son Texnikumi</title>
+  <meta name="keywords" content="kollej, 1-son texnikum, 1-son tehnikum, 1 son tehnikum, 1 son texnikum, Shahrixon tumani 1-kollej, Shahrixon tumani 1-son texnikum, Shahrixon tumani 1-son tehnikum, Shahrixon politexnikum, Shahrixon politehnikum, 1-son tehnikumi, Shahrixon tumani 1-son texnikumi, Andijon viloyati texnikum, Shahrixon kollej, Andijon kollej, kasb-hunar maktabi, dual ta'lim, qabul 2026, ro'yxatdan o'tish">
+  <meta name="robots" content="index, follow">
+  <title>Ro'yxatdan o'tish — Shahrixon 1-son Texnikumi</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -813,7 +815,7 @@
     <!-- QABUL TABLE -->
     <div style="max-width:1400px;margin:40px auto 0;">
       <h3 style="color:#fff;font-size:1.1rem;font-weight:600;margin-bottom:4px;">2026â€“2027 o'quv yili qabul rejasi</h3>
-      <p style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:0;">Jami 390 ta o'rin Â· 9-sinf bitiruvchilari negizida</p>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:0;">Jami 390 ta o'rin · 9-sinf bitiruvchilari negizida</p>
     </div>
     <div style="max-width:1400px;margin:0 auto;">
       <div class="reg-table-wrap">
@@ -985,8 +987,7 @@
       fd.append('yonalish', yonalish);
       fd.append('savol',    savol);
       
-      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-      const apiUrl = isLocal ? 'http://localhost:8001/register_api.php' : 'https://YOUR_DOMAIN.myxvest.ru/backend/register_api.php';
+      const apiUrl = '/backend/register_api.php';
       
       fetch(apiUrl, { method: 'POST', body: fd })
         .then(function(r) { return r.json(); })

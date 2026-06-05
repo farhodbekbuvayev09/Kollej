@@ -7,8 +7,7 @@
   'use strict';
 
   // ── Config ──────────────────────────────────────────────────  // === SOZLAMALAR ===
-  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const AGENT_ENDPOINT = isLocal ? 'http://localhost:8001/agent.php' : 'https://YOUR_DOMAIN.myxvest.ru/backend/agent.php';
+  const AGENT_ENDPOINT = '/backend/agent.php';
   const MAX_HISTORY = 10;     // messages kept per session
   const STORAGE_KEY = 'txAgent_history';
 
