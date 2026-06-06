@@ -526,6 +526,48 @@
     @media (max-width: 900px) {
       .reg-form-wrap { max-width: 100%; }
     }
+
+    /* PAGE LOAD + SCROLL ANIMATIONS */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-28px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    /* Hero load animations */
+    .reg-hero-badge  { opacity: 0; animation: fadeInUp 0.7s ease forwards 0.1s; }
+    .reg-hero-title  { opacity: 0; animation: fadeInUp 0.8s ease forwards 0.25s; }
+    .reg-hero-sub    { opacity: 0; animation: fadeInUp 0.8s ease forwards 0.45s; }
+    /* Scroll reveal base */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.left {
+      transform: translateX(-28px);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    /* Scale animation for cards */
+    .reg-info-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .reg-info-card:hover {
+      transform: translateY(-4px);
+    }
   </style>
 </head>
 <body>
@@ -606,9 +648,9 @@
   <!-- DIRECTIONS + FORM -->
   <div class="reg-section-full" style="background:#f7f6f1;">
     <div class="reg-section" style="padding-top:0; padding-bottom:0;">
-      <p class="reg-eyebrow">Qadamlar: 1 / 2</p>
-      <h2 class="reg-title">Yo'nalishingizni <strong>tanlang</strong></h2>
-      <p class="reg-subtitle">Qiziqtirgan yo'nalishni bosing, so'ngra ma'lumotlaringizni kiriting.</p>
+      <p class="reg-eyebrow reveal">Qadamlar: 1 / 2</p>
+      <h2 class="reg-title reveal reveal-delay-1">Yo'nalishingizni <strong>tanlang</strong></h2>
+      <p class="reg-subtitle reveal reveal-delay-2">Qiziqtirgan yo'nalishni bosing, so'ngra ma'lumotlaringizni kiriting.</p>
 
       <!-- DIRECTION CARDS -->
       <div class="direction-grid" id="dir-grid">
@@ -773,10 +815,10 @@
 
       <!-- GALLERY -->
       <div class="reg-gallery">
-        <img src="Images/rasm1.webp" alt="Texnikum ustozlari" loading="lazy">
-        <img src="Images/rasm2.webp" alt="Amaliy mashg'ulotlar" loading="lazy">
-        <img src="Images/rasm3.webp" alt="Xalqaro va mahalliy sertifikat sohiblari" loading="lazy">
-        <img src="Images/rasm4.webp" alt="Yutuqlarimiz va sertifikatlarimiz" loading="lazy">
+        <img src="Images/rasm1.webp" alt="Texnikum ustozlari" loading="lazy" class="reveal reveal-delay-1">
+        <img src="Images/rasm2.webp" alt="Amaliy mashg'ulotlar" loading="lazy" class="reveal reveal-delay-2">
+        <img src="Images/rasm3.webp" alt="Xalqaro va mahalliy sertifikat sohiblari" loading="lazy" class="reveal reveal-delay-3">
+        <img src="Images/rasm4.webp" alt="Yutuqlarimiz va sertifikatlarimiz" loading="lazy" class="reveal reveal-delay-4">
       </div>
 
     </div><!-- /reg-section -->
@@ -785,28 +827,28 @@
   <!-- INFO: STATS + QABUL TABLE -->
   <div class="reg-info-bg">
     <div style="max-width:1400px;margin:0 auto;">
-      <p class="reg-eyebrow" style="color:rgba(255,255,255,0.45);">Texnikum haqida</p>
-      <h2 class="reg-title" style="color:#fff;">Raqamlar bilan <strong>tanishing</strong></h2>
+      <p class="reg-eyebrow reveal" style="color:rgba(255,255,255,0.45);">Texnikum haqida</p>
+      <h2 class="reg-title reveal reveal-delay-1" style="color:#fff;">Raqamlar bilan <strong>tanishing</strong></h2>
     </div>
 
-    <div class="reg-info-grid">
-      <div class="reg-info-card">
-        <div class="reg-info-card-num">739</div>
+    <div class="reg-info-grid" id="reg-info-grid">
+      <div class="reg-info-card reveal reveal-delay-1">
+        <div class="reg-info-card-num counter2" data-target="739">0</div>
         <div class="reg-info-card-label">Joriy o'quvchilar</div>
         <div class="reg-info-card-desc">665 kunduzgi, 74 dual ta'lim shaklida. Shundan 225 nafari qizlar.</div>
       </div>
-      <div class="reg-info-card">
-        <div class="reg-info-card-num">56</div>
+      <div class="reg-info-card reveal reveal-delay-2">
+        <div class="reg-info-card-num counter2" data-target="56">0</div>
         <div class="reg-info-card-label">Pedagog xodim</div>
         <div class="reg-info-card-desc">35 o'qituvchi, 1 bosh usta va 21 ishlab chiqarish ta'limi ustasi.</div>
       </div>
-      <div class="reg-info-card">
-        <div class="reg-info-card-num">331</div>
+      <div class="reg-info-card reveal reveal-delay-3">
+        <div class="reg-info-card-num counter2" data-target="331">0</div>
         <div class="reg-info-card-label">2024/25 bitiruvchi</div>
         <div class="reg-info-card-desc">So'nggi o'quv yilida texnikumni muvaffaqiyatli tamomlagan o'quvchilar.</div>
       </div>
-      <div class="reg-info-card">
-        <div class="reg-info-card-num">32</div>
+      <div class="reg-info-card reveal reveal-delay-4">
+        <div class="reg-info-card-num counter2" data-target="32">0</div>
         <div class="reg-info-card-label">O'quv auditoriya</div>
         <div class="reg-info-card-desc">3 laboratoriya, 3 ustaxona va 1 kompyuter sinfi bilan jihozlangan.</div>
       </div>
@@ -1013,54 +1055,92 @@
   })();
   </script>
 
-  <!-- Counter Animation -->
+  <!-- Scroll Reveal + Counter Animations -->
   <script>
   (function() {
-    function animateCounter(el) {
+    /* ---- easing ---- */
+    function easeOutExpo(t) {
+      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    }
+
+    /* ---- counter ---- */
+    function animateCounter(el, duration) {
       var target = parseInt(el.getAttribute('data-target'), 10);
-      var duration = 1800;
+      duration = duration || 1800;
       var start = null;
-      // Easing function: easeOutExpo
-      function easeOutExpo(t) {
-        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-      }
-      function step(timestamp) {
-        if (!start) start = timestamp;
-        var elapsed = timestamp - start;
-        var progress = Math.min(elapsed / duration, 1);
-        var easedProgress = easeOutExpo(progress);
-        el.textContent = Math.floor(easedProgress * target);
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        } else {
-          el.textContent = target;
-        }
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        el.textContent = Math.floor(easeOutExpo(progress) * target);
+        if (progress < 1) { requestAnimationFrame(step); }
+        else { el.textContent = target; }
       }
       requestAnimationFrame(step);
     }
 
-    var observed = false;
-    var counters = document.querySelectorAll('.counter');
-
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function(entries) {
+    /* ---- scroll reveal ---- */
+    function initReveal() {
+      var revealEls = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        revealEls.forEach(function(el) { el.classList.add('visible'); });
+        return;
+      }
+      var ro = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
-          if (entry.isIntersecting && !observed) {
-            observed = true;
-            counters.forEach(function(c) { animateCounter(c); });
-            observer.disconnect();
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            ro.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealEls.forEach(function(el) { ro.observe(el); });
+    }
+
+    /* ---- stats strip counter (group: fires once when strip visible) ---- */
+    function initCounterStrip() {
+      var counters = document.querySelectorAll('.counter');
+      if (!counters.length) return;
+      var fired = false;
+      if (!('IntersectionObserver' in window)) {
+        counters.forEach(function(c) { animateCounter(c, 1600); });
+        return;
+      }
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !fired) {
+            fired = true;
+            counters.forEach(function(c) { animateCounter(c, 1600); });
+            obs.disconnect();
           }
         });
       }, { threshold: 0.3 });
-
       var strip = document.getElementById('reg-stats-strip');
-      if (strip) observer.observe(strip);
-    } else {
-      // Fallback: just show numbers immediately
-      counters.forEach(function(c) {
-        c.textContent = c.getAttribute('data-target');
-      });
+      if (strip) obs.observe(strip);
     }
+
+    /* ---- info cards counter (counter2: each fires when card becomes visible) ---- */
+    function initCounter2() {
+      var counters2 = document.querySelectorAll('.counter2');
+      if (!counters2.length) return;
+      if (!('IntersectionObserver' in window)) {
+        counters2.forEach(function(c) { animateCounter(c, 1600); });
+        return;
+      }
+      var obs2 = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target, 1600);
+            obs2.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      counters2.forEach(function(c) { obs2.observe(c); });
+    }
+
+    /* ---- init ---- */
+    initReveal();
+    initCounterStrip();
+    initCounter2();
   })();
   </script>
 
