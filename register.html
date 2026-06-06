@@ -580,25 +580,25 @@
   </section>
 
   <!-- STATS STRIP -->
-  <div class="reg-stats">
+  <div class="reg-stats" id="reg-stats-strip">
     <div class="reg-stat">
-      <div class="reg-stat-num">720</div>
+      <div class="reg-stat-num counter" data-target="720">0</div>
       <div class="reg-stat-label">Quvvati</div>
     </div>
     <div class="reg-stat">
-      <div class="reg-stat-num">11</div>
+      <div class="reg-stat-num counter" data-target="11">0</div>
       <div class="reg-stat-label">Yo'nalish</div>
     </div>
     <div class="reg-stat">
-      <div class="reg-stat-num">56</div>
+      <div class="reg-stat-num counter" data-target="56">0</div>
       <div class="reg-stat-label">Pedagog xodim</div>
     </div>
     <div class="reg-stat">
-      <div class="reg-stat-num">739</div>
+      <div class="reg-stat-num counter" data-target="739">0</div>
       <div class="reg-stat-label">Joriy o'quvchi</div>
     </div>
     <div class="reg-stat">
-      <div class="reg-stat-num">2006</div>
+      <div class="reg-stat-num counter" data-target="2006">0</div>
       <div class="reg-stat-label">Tashkil etilgan</div>
     </div>
   </div>
@@ -1012,6 +1012,58 @@
     });
   })();
   </script>
+
+  <!-- Counter Animation -->
+  <script>
+  (function() {
+    function animateCounter(el) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      var duration = 1800;
+      var start = null;
+      // Easing function: easeOutExpo
+      function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      }
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        var elapsed = timestamp - start;
+        var progress = Math.min(elapsed / duration, 1);
+        var easedProgress = easeOutExpo(progress);
+        el.textContent = Math.floor(easedProgress * target);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    var observed = false;
+    var counters = document.querySelectorAll('.counter');
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !observed) {
+            observed = true;
+            counters.forEach(function(c) { animateCounter(c); });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      var strip = document.getElementById('reg-stats-strip');
+      if (strip) observer.observe(strip);
+    } else {
+      // Fallback: just show numbers immediately
+      counters.forEach(function(c) {
+        c.textContent = c.getAttribute('data-target');
+      });
+    }
+  })();
+  </script>
+
   <script src="agent-widget.js"></script>
 </body>
 </html>
