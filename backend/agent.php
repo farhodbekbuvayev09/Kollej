@@ -24,7 +24,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { exit; }
 if ($_SERVER['REQUEST_METHOD'] !== 'POST')    { echo json_encode(['error'=>'Invalid']); exit; }
 
-define('DEEPSEEK_API_KEY', 'sk-c1d358356cdb42ec88e39a0fc62bc3d5');
+define('DEEPSEEK_API_KEY', 'YOUR_DEEPSEEK_API_KEY');
 define('DEEPSEEK_MODEL',   'deepseek-chat');
 define('NEWS_JSON',        __DIR__ . '/news.json');
 

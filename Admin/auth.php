@@ -12,7 +12,7 @@ define('ADMIN_USER', 'Admin1');
 define('ADMIN_PASS', 'Admin009');
 define('NEWS_JSON',  __DIR__ . '/../news.json');
 define('NEWS_IMGS',  __DIR__ . '/../news-images/');
-define('DEEPSEEK_API_KEY', 'sk-c1d358356cdb42ec88e39a0fc62bc3d5');
+define('DEEPSEEK_API_KEY', 'YOUR_DEEPSEEK_API_KEY');
 define('DEEPSEEK_MODEL',   'deepseek-chat');
 
 function requireLogin() {

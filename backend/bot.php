@@ -15,7 +15,7 @@
 //    GET ?webhook_info    → webhook holati
 // ============================================================
 
-define('BOT_TOKEN', '8027930820:AAF6qJ2bNFTQxPH5v4UPrZPPOBMXalfg3ME');
+define('BOT_TOKEN', 'YOUR_TELEGRAM_BOT_TOKEN');
 define('GROUP_ID',  '-5216329346');
 define('API',       'https://api.telegram.org/bot' . BOT_TOKEN . '/');
 

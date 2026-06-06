@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 header('Content-Type: application/json; charset=utf-8');
 
-define('BOT_TOKEN', '8027930820:AAF6qJ2bNFTQxPH5v4UPrZPPOBMXalfg3ME');
+define('BOT_TOKEN', 'YOUR_TELEGRAM_BOT_TOKEN');
 define('GROUP_ID',  '-5216329346');
 define('TG_API',    'https://api.telegram.org/bot' . BOT_TOKEN . '/');
 
